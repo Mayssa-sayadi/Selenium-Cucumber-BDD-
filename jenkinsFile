@@ -1,0 +1,56 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'MAVEN_HOME'      
+        jdk 'JAVA_HOME'         // Ou JDK11 selon ton projet
+    }
+
+    environment {
+        MAVEN_OPTS = "-Xmx1024m"
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/Mayssa-sayadi/Selenium-Cucumber-BDD-.git'
+            }
+        }
+
+        stage('Clean & Compile') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+
+        stage('Tests') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+
+        stage('Cucumber Report') {
+            steps {
+                echo 'Génération du rapport Cucumber'
+            }
+        }
+    }
+
+    post {
+
+        always {
+            echo 'Archivage des résultats'
+            junit 'target/surefire-reports/*.xml'
+        }
+
+        success {
+            echo '✅ Build et tests réussis'
+        }
+
+        failure {
+            echo '❌ Échec du pipeline'
+        }
+    }
+}

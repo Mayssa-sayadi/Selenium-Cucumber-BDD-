@@ -14,8 +14,8 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/Mayssa-sayadi/Selenium-Cucumber-BDD-'
+                git branch: 'master',
+                    url: 'https://github.com/Mayssa-sayadi/Selenium-Cucumber-BDD-.git'
             }
         }
 

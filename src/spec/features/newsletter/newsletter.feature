@@ -1,6 +1,6 @@
 #langage:en
 @newsletter
-Feature: je veux tester le Sign up pour le newsletter
+Feature: je veux tester le Sign up pour le newsletter 
 
 Background:
 Given Je me connecte sur le site Web Demo Shop

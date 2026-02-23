@@ -12,7 +12,7 @@ import static io.cucumber.junit.CucumberOptions.SnippetType.CAMELCASE;
 		features = {"src/spec/features"},
 		plugin = {"pretty","html:target/report/cucumber-report.html","json:target/report/cucumber-report.json"},
 		//glue = {"src/test/java/com/e2eTest/automation/step_definitions"},
-		tags = (""),
+		tags = ("@RegisterWithInvalidCredentials"),
 		monochrome = true,
 		snippets = CAMELCASE
 		

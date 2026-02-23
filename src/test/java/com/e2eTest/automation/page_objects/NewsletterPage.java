@@ -6,11 +6,8 @@ import org.openqa.selenium.support.How;
 
 import com.e2eTest.automation.utils.BasePage;
 import com.e2eTest.automation.utils.Setup;
-import com.e2eTest.automation.utils.WaitUtils;
 
 public class NewsletterPage extends BasePage{
-
-	private WaitUtils waitUtils;
 	
 	/*
 	 *Retrieve webElement
@@ -28,7 +25,6 @@ public class NewsletterPage extends BasePage{
 		
 	public NewsletterPage() {
 		super(Setup.getDriver());
-        waitUtils = new WaitUtils(Setup.getDriver());
 	}
 
 	public WebElement getEmailField() {
@@ -39,10 +35,8 @@ public class NewsletterPage extends BasePage{
 		return subscribeBtn;
 	}
 	
-	public String getMessageConfirm() {
-		return waitUtils
-                .waitForElementToBeVisible(messageConfirm, 10)
-                .getText()
-                .trim();
+	public WebElement getMessageConfirm() {
+		return messageConfirm;
+               
 	}
 }

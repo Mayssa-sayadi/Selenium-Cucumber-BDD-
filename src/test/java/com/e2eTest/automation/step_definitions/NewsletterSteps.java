@@ -1,10 +1,11 @@
 package com.e2eTest.automation.step_definitions;
 
-import org.junit.jupiter.api.Assertions;
-
 import com.e2eTest.automation.page_objects.NewsletterPage;
 import com.e2eTest.automation.utils.ActionsUtils;
 import com.e2eTest.automation.utils.ConfigFileReader;
+import com.e2eTest.automation.utils.Setup;
+import com.e2eTest.automation.utils.Validations;
+import com.e2eTest.automation.utils.WaitUtils;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,6 +15,9 @@ public class NewsletterSteps {
 	NewsletterPage newsletterPage = new NewsletterPage();
 	ConfigFileReader configFileReader = new ConfigFileReader();
 	ActionsUtils actionsUtils = new ActionsUtils();	
+	WaitUtils waitUtils = new WaitUtils(Setup.getDriver()) ;
+	Validations validations = new Validations();
+	
 	
 	@When("Je saisais une adresse mail")
 	public void jeSaisaisUneAdresseMail() {
@@ -24,14 +28,9 @@ public class NewsletterSteps {
 	   actionsUtils.click(newsletterPage.getSubscribeBtn());
 	}
 	@Then("Un message de confirmation s'affiche {string}")
-	public void unMessageDeConfirmationSAffiche(String expectedMessage) {
-		 String actualMessage = newsletterPage.getMessageConfirm();
-
-		    System.out.println("EXPECTED = [" + expectedMessage + "]");
-		    System.out.println("ACTUAL   = [" + actualMessage + "]");
-
-		    Assertions.assertEquals(expectedMessage, actualMessage);	}
-
-
+	public void unMessageDeConfirmationSAffiche(String expectedMessage) throws InterruptedException{
+		validations.assertEquals(waitUtils.waitForElementToBeVisible(newsletterPage.getMessageConfirm(), 10) ,expectedMessage);
+			
+	}
 
 }

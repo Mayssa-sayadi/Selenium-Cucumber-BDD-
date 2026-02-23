@@ -39,6 +39,11 @@ public class RegisterPage extends BasePage{
 	@FindBy(how = How.CSS, using =".result" )
 	private static WebElement message;
 	
+	@FindBy(how = How.CSS, using ="div[class='validation-summary-errors'] ul li" )
+	private static WebElement messageEmail;
+	
+	
+	
 	public RegisterPage() {
 		super(Setup.getDriver());
 	}
@@ -79,6 +84,10 @@ public class RegisterPage extends BasePage{
 	
 	public static WebElement getMessage() {
 		return message;
+	}
+	
+	public static WebElement getMessageEmail() {
+		return messageEmail;
 	}
 	
 }

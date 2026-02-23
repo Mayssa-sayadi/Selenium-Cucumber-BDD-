@@ -52,7 +52,7 @@ public class Validations extends BasePage {
 	 */
 	public void assertEquals(WebElement element, String text) {
 		String text1 = element.getText();
-		Assert.assertEquals(text1, text);
+		Assert.assertEquals(text, text1);
 
 	}
 

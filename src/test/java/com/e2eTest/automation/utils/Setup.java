@@ -36,6 +36,7 @@ public class Setup {
 
 	private static WebDriver driver;
 	private static final Logger LOGGER = (Logger) LogManager.getLogger(Setup.class.getName());
+	
 	@Before
 	public void setWebDriver(Scenario scenario) {
 
@@ -58,6 +59,8 @@ public class Setup {
 			chromeOptions.addArguments("--disable-logging");
 			chromeOptions.addArguments("--log-level=3");
 			chromeOptions.addArguments("--remote-debugging-pipe");
+			chromeOptions.addArguments("--ignore-certificate-errors");
+
 			//chromeOptions.addArguments("--headless=new");
 			//chromeOptions.addArguments("force-device-scale-factor=0.75");
 			driver = new ChromeDriver(chromeOptions);
